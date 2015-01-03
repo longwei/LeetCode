@@ -29,3 +29,6 @@ Status
 - [ ] cc150 hard
 - [ ] leetcode 5
 - [ ] leetcode 4
+- [ ] leetcode 3
+- [ ] leetcode 1-2
+- [ ] EPI
