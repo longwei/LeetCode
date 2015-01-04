@@ -18,8 +18,6 @@ LeetCode
 
 
 
-
-
 Status
 ------
 - [ ] cc150 ch1-4
