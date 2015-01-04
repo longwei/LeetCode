@@ -1,6 +1,6 @@
 package cc150.ch1;
 
-import utils.AssortedMethods;
+import utils.TestHelper;
 /**
  * Created by longwei on 1/3/15.
  * 1.4 write a method to replace all space in a string with %20, IN-SPACE
@@ -14,7 +14,7 @@ public class EcapeSpace {
             arr[i] = str.charAt(i);
         }
         replaceSpace(arr, str.length());
-        System.out.println("\"" + AssortedMethods.charArrayToString(arr) + "\"");
+        System.out.println("\"" + TestHelper.charArrayToString(arr) + "\"");
     }
 
     //c style signature, assume str have enough space for appending %20
