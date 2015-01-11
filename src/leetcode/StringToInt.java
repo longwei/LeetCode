@@ -37,25 +37,18 @@ public class StringToInt {
         while(i < n && input[i] >= '0' && input[i] <= '9'){
             int digit = input[i] - '0';
 
-            if (ans > Integer.MAX_VALUE / 10) {
-                overflow = true;
-                break;
-            }
-            if (ans == Integer.MAX_VALUE / 10 ){
-                if( (!negative && digit >=7) || (negative && digit >=8)) {
-                    overflow = true;
-                    break;
+            if(negative) {
+                if (-1 * ans < (Integer.MIN_VALUE + digit) / 10) {
+                    return Integer.MIN_VALUE;
+                }
+            } else {
+                if(ans > (Integer.MAX_VALUE - digit)/10 ){
+                    return Integer.MAX_VALUE;
                 }
             }
             i++;
             ans = ans * 10 + digit;
         }
-
-
-        if (negative){
-            return overflow ? Integer.MIN_VALUE : ans * -1;
-        } else {
-            return overflow ? Integer.MAX_VALUE : ans;
-        }
+        return negative? -1*ans : ans;
     }
 }
