@@ -1,6 +1,4 @@
-package leetcode;
-import java.math.BigInteger;
-import java.util.Random;
+package leetcode.level5;
 
 /**
  * Created by longwei on 1/8/15.

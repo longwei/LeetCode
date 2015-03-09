@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.level5;
 
 import java.util.List;
 import java.util.Arrays;

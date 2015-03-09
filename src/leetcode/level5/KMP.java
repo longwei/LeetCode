@@ -1,6 +1,5 @@
-package leetcode;
+package leetcode.level5;
 
-import utils.TestHelper;
 /**
  * Created by longwei on 1/4/15.
  */

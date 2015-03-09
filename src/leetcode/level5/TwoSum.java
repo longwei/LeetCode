@@ -1,6 +1,7 @@
-package leetcode;
+package leetcode.level5;
 
 import java.util.Arrays;
+
 
 /**
  * Created by longwei on 1/3/15.

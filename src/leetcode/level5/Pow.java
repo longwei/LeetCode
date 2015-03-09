@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.level5;
 
 /**
  * Created by longwei on 1/8/15.
