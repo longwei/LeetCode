@@ -7,7 +7,8 @@ public class strStrBruteForce {
 
     public int strStr(String haystack, String needle) {
         if(haystack == null || needle ==null) return  -1;
-        if(haystack.isEmpty() || needle.isEmpty()) return 0;
+        //no need for this one
+//        if(haystack.isEmpty() || needle.isEmpty()) return 0;
         for(int i = 0; ;++i){
             for(int j = 0; ; ++j ){
                 if(j == needle.length()) return i;
@@ -18,7 +19,5 @@ public class strStrBruteForce {
     }
 
     public static void main(String[] args) {
-
-
     }
 }
