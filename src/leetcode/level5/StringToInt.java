@@ -10,7 +10,7 @@ public class StringToInt {
         System.out.println(atoi("  -123"));
     }
 
-    public static int atoi(String str) {
+    public static int atoi_old(String str) {
         char[] input = str.toCharArray();
         boolean negative = false;
         boolean overflow = false;
@@ -50,5 +50,32 @@ public class StringToInt {
             ans = ans * 10 + digit;
         }
         return negative? -1*ans : ans;
+    }
+
+
+    private static final int maxDiv10 = Integer.MAX_VALUE / 10;
+    public static int atoi(String str) {
+        int i = 0;
+        int n = str.length();
+        while( i < n && str.charAt(i) == ' ') i++;
+        int sign = 1;
+        if(i < n && str.charAt(i) == '+') {
+            i++;
+        } else if ( i < n && str.charAt(i) == '-') {
+            sign = -1;
+            i++;
+        }
+        int overflow_lastbig = (sign == 1)? 7:8;
+
+        int num = 0;
+        while(i < n && Character.isDigit(str.charAt(i))){
+            int digit = str.charAt(i) - '0';
+            if(num > maxDiv10 || (num == maxDiv10 && digit > overflow_lastbig)){
+                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            num = num * 10 + digit;
+            i++;
+        }
+        return sign*num;
     }
 }
