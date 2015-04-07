@@ -63,6 +63,7 @@ public class ValidNumber {
     public static void main(String[] args) {
         ValidNumber test = new ValidNumber();
         System.out.println(test.isNumber(null));
+        System.out.println(test.isNumber("123."));
         System.out.println(test.isNumber(""));
         System.out.println(test.isNumber(" "));
         System.out.println(test.isNumber("  123"));
