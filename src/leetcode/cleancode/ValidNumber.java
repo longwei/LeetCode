@@ -14,9 +14,10 @@ public class ValidNumber {
         if(s.isEmpty()) { return false;}
         int N = s.length();
         int i = 0;
-        boolean hasdigit= false;
-        boolean point = false;
-        boolean hasE = false;
+//        boolean hasdigit= false;
+//        boolean point = false;
+//        boolean hasE = false;
+        boolean isNumeric = false;
         //remove while space first
         while(i < N && s.charAt(i) == ' '){
             i++;
@@ -25,37 +26,36 @@ public class ValidNumber {
         if( s.charAt(i) == '+' || s.charAt(i) == '-'){i++;}
         //now comes the real numbers
         while(i < N && Character.isDigit(s.charAt(i))){
-            hasdigit = true;
+            isNumeric = true;
             i++;
         }
         if( i < N && s.charAt(i) == '.'){
             i++;
             while( i< N && Character.isDigit(s.charAt(i))){
                 i++;
-                point = true;
+                isNumeric = true;
             }
         }
-        //it must have either 1 or 1.1 or .1 for a valid
-        if(!hasdigit && !point) return false;
+        //it must have either 1 or 1.1 or .1 for a base
+        if(!isNumeric) return false;
 
         if( i < N && s.charAt(i) == 'e'){
             i++;
-            if( i == N) return false;
-            if( s.charAt(i) == '+' || s.charAt(i) == '-'){
+            isNumeric = false;
+            if( i < N && (s.charAt(i) == '+' || s.charAt(i) == '-')){
                 i++;
             }
             while( i < N && Character.isDigit(s.charAt(i))){
-                hasE = true;
+                isNumeric = true;
                 i++;
             }
-            if(hasE == false) return false;
         }
 
         //rest of the space
         while(i < N && s.charAt(i) == ' '){
             i++;
         }
-        return i == N;
+        return isNumeric && i == N;
     }
 
 
