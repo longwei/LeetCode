@@ -4,3 +4,5 @@
 LeetCode.iml
 
 *.class
+
+out/*

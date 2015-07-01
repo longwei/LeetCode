@@ -1,6 +1,6 @@
-package ch5;
+package cc150.ch5;
 
-import CtCILibrary.AssortedMethods;
+import utils.AssortedMethods;
 
 public class UpdateBits {
 	/* 5.1

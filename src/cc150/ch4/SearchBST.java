@@ -1,5 +1,5 @@
 package ch4;
-import CtCILibrary.*;
+import utils.*;
 
 public class SearchBST {
 

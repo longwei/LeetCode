@@ -1,8 +1,8 @@
-package ch3;
+package cc150.ch3;
 
 import java.util.Stack;
 
-import CtCILibrary.AssortedMethods;
+import utils.AssortedMethods;
 
 /*
  * 3.2 push, pop, and min ops with o(1) time
