@@ -8,22 +8,10 @@ package leetcode.cleancode;
  */
 public class LongestSubstringWithMostDistinctChar {
 
-    public int lengthOfLongestSubstringTwoDistinct(String s){
-        int i = 0;
-        int j = -1;//alway point to first diff char showing up
-        int max = 0;
-        for(int k = 1; k < s.length(); k++){
-            if ( s.charAt(k) == s.charAt(k-1)) continue;
-            if( j >= 0 && s.charAt(j) != s.charAt(k)){
-                max = Math.max(max, k-i);
-                i = k + 1;
-            }
-            j = k-1;
-        }
-        return Math.max(s.length()-i, max);
-    }
 
-    public int generalK(String s){
+    //why it can't optimazed to one pass instead of 2 pass.
+    //because the char j+1 pointer to is not one the [i j] should kick out
+    public int lengthOfLongestSubstringTwoDistinct(String s){
         int[] count = new int[256];
         int i = 0, numDistict = 0, maxLen = 0;
         for(int j = 0; j < s.length(); j++){
