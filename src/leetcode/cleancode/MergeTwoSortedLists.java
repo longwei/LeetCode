@@ -4,7 +4,7 @@ package leetcode.cleancode;
 import utils.ListNode;
 /**
  * Created by longwei on 7/5/15.
- * the
+ * dummy head avoid edge case for initial the head
  */
 public class MergeTwoSortedLists {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
