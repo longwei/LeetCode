@@ -1,7 +1,7 @@
-package leetcode.level5;
+package leetcode.Tree;
 
 /**
- * Created by longwei on 1/11/15.
+ * Created by longwei on 7/11/15.
  * BST: for all the node, the left children are less than current one, which is less than all right nodes
  * DFS, print out the tree to see if it is sorted
  */
@@ -14,11 +14,12 @@ public class ValidateBST {
         TreeNode right;
         TreeNode(int x) { val = x;}
     }
-//    public static  int last_seen = Integer.MIN_VALUE;
-    //this will fail some edge case where {Integer.MIN_VALUE} {Integer.MIN_VALUE, Integer.MIN_VALUE}
-
+    //In-order traversal, just checking strict increasing order
+    //public static  int last_seen = Integer.MIN_VALUE;
+    //but the edge case is the node contains {Integer.MIN_VALUE} {Integer.MIN_VALUE, Integer.MIN_VALUE}
     //#1 using a stack to record all print out
-    //# using long as upper & lower limit
+    //#2 using Integer, and use null for left most and right most
+    //#2 using long
    public Stack<Integer> last_seen;
 
     public boolean isValidBST1(TreeNode root) {
@@ -34,7 +35,7 @@ public class ValidateBST {
         return true;
     }
 
-
+    //another solution is smarter that passing the left and right limits for children nodes
     public boolean isValidBST(TreeNode root) {
         return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
@@ -44,4 +45,16 @@ public class ValidateBST {
         if (root.val >= maxVal || root.val <= minVal) return false;
         return isValidBST(root.left, minVal, root.val) && isValidBST(root.right, root.val, maxVal);
     }
+
+    //lame version to get over edge case
+    public boolean isValidBST2(TreeNode root) {
+        return valid(root, null, null);
+    }
+    private boolean valid(TreeNode p, Integer low, Integer high) {
+        if (p == null) return true;
+        return (low == null || p.val > low) && (high == null || p.val < high)
+                && valid(p.left, low, p.val)
+                && valid(p.right, p.val, high);
+    }
+
 }
