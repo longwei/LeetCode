@@ -1,4 +1,4 @@
-package leetcode.cleancode;
+package leetcode.LinkedList;
 import utils.ListNode;
 /**
  * Created by longwei on 7/6/15.

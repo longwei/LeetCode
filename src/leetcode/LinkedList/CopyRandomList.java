@@ -1,4 +1,4 @@
-package leetcode.cleancode;
+package leetcode.LinkedList;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,4 +39,5 @@ public class CopyRandomList {
     }
 
     //the other solution is way to tricky
+    //TODO
 }

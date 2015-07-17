@@ -1,13 +1,17 @@
-package leetcode.level2;
+package leetcode.String;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 /**
  * Created by longwei on 4/6/15.
  * Given a string, find the length of the longest substring without repeating characters.
  * For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3.
  * For “bbbbb” the longest substring is “b”, with the length of 1.
+ *
+ * solution is two pointer to keep a invariant sliding window, so that it contains no duplicate char
+ * and the real question is what to do when we add a [j] to the windows that break the invariant?
+ * 1. keep move i -> i+1 until invariant is met
+ * 2. jump i to last time seeing index plus 1, char[s[j]]+1
  */
 public class LongestSubStringWithoutRepeatingChar {
     public int lengthOfLongestSubstring(String s) {

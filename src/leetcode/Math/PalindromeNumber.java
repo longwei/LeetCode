@@ -1,4 +1,4 @@
-package leetcode.cleancode;
+package leetcode.Math;
 
 /**
  * Created by longwei on 7/5/15.
