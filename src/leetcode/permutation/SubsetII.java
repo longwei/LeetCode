@@ -5,19 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by longwei on 7/19/15.
- * Given a set of distinct integers, S, return all possible subsets.
- *
- * input nums[]
- * for each element in nums
- *   insert e into path,
- *   recur
- *   pop e out of path //this step is most important
+ * Created by longwei on 7/20/15.
  *
  */
-public class Subset {
+public class SubsetII {
     private List<List<Integer>> result = new ArrayList<List<Integer>>();
-    public  List<List<Integer>> subsets(int[] nums) {
+    public  List<List<Integer>> subsetsWithDup(int[] nums) {
         ArrayList<Integer> path = new ArrayList<>();
         Arrays.sort(nums);
         subsetHelper(path, nums, 0);
@@ -27,6 +20,9 @@ public class Subset {
     private void subsetHelper(ArrayList<Integer> path, int[] nums, int pos){
         result.add(new ArrayList<>(path));//oops, should pass a copy not a reference
         for(int i = pos; i < nums.length; i++){
+            if(i != pos && nums[i] == nums[i-1]){
+                continue;
+            }
             path.add(nums[i]);
             subsetHelper(path, nums, i + 1);
             path.remove(path.size()-1);
@@ -34,9 +30,9 @@ public class Subset {
     }
 
     public static void main(String[] args){
-        Subset t = new Subset();
+        SubsetII t = new SubsetII();
         int[] input = {1,2,2};
-        List<List<Integer>> ret = t.subsets(input);
+        List<List<Integer>> ret = t.subsetsWithDup(input);
         for( List<Integer> row : ret){
             System.out.println(Arrays.toString(row.toArray()));
         }
