@@ -2,6 +2,7 @@ package leetcode.permutation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +18,12 @@ import java.util.List;
  */
 public class Subset {
     private List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+
+    /**
+     * @param nums: A set of numbers.
+     * @return: A list of lists. All valid subsets.
+     */
     public  List<List<Integer>> subsets(int[] nums) {
         ArrayList<Integer> path = new ArrayList<>();
         Arrays.sort(nums);
@@ -41,4 +48,6 @@ public class Subset {
             System.out.println(Arrays.toString(row.toArray()));
         }
     }
+
+
 }
