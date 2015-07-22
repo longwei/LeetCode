@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  * Created by longwei on 7/20/15.
- *
+ * Given a collection of integers that might contain duplicates, nums, return all possible subsets.
+ *  Elements in a subset must be in non-descending order.
+ *  The solution set must not contain duplicate subsets
  */
 public class SubsetII {
     private List<List<Integer>> result = new ArrayList<List<Integer>>();
