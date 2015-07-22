@@ -27,13 +27,12 @@ public class Permutation {
         for(int i = 0; i < nums.size(); i++){
             if(visited[i]){
                 continue;
-            } else {
-                path.add(nums.get(i));
-                visited[i] = true;
-                backtrace(path, nums, visited);
-                path.remove(path.size()-1);
-                visited[i] = false;
             }
+            path.add(nums.get(i));
+            visited[i] = true;
+            backtrace(path, nums, visited);
+            path.remove(path.size()-1);
+            visited[i] = false;
         }
     }
 
@@ -43,21 +42,46 @@ public class Permutation {
         input.add(1);
         input.add(2);
         input.add(3);
-        ArrayList<ArrayList<Integer>> ret = t.permute(input);
+//        ArrayList<ArrayList<Integer>> ret = t.permute(input);
+        int[] arrayInput = new int[]{1,2,3};
+        ArrayList<ArrayList<Integer>> ret = t.permute(arrayInput);
         for( List<Integer> row : ret){
             System.out.println(Arrays.toString(row.toArray()));
         }
     }
 
     /*
-    Permutations II
-    * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
-    * [1,2,2] ==>
-    * [ [1,2,2],
-
-    [2,1,2],
-
-    [2,2,1]]
-
+     * Recusive, but use swap method to mark picked zone and toPick zone
      */
+    public ArrayList<ArrayList<Integer>> permute(int[] num){
+        ArrayList<ArrayList<Integer>> ret = new ArrayList<>();
+        permute(num, 0, ret);
+        return ret;
+    }
+
+    private void permute(int[]num, int start, ArrayList<ArrayList<Integer>> ret){
+        if(start == num.length) {
+            ret.add(convertArrayToList(num));
+        }
+
+        for (int i = start; i < num.length; ++i) {
+            swap(num, start, i);//shuffle
+            permute(num, start+1, ret);
+            swap(num, start, i);
+        }
+    }
+    private void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    private ArrayList<Integer> convertArrayToList(int[] num) {
+        ArrayList<Integer> item = new ArrayList<>();
+        for (int h = 0; h < num.length; h++) {
+            item.add(num[h]);
+        }
+        return item;
+    }
+
 }

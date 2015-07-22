@@ -20,60 +20,38 @@ import java.util.List;
  */
 
 public class PermutationII {
-    private ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+    private List<List<Integer>> result = new ArrayList<>();
 
-    public ArrayList<ArrayList<Integer>> permuteUnique(ArrayList<Integer> nums) {
-        // write your code here
-        if( nums == null || nums.isEmpty() ) return result;
+    public List<List<Integer>> permuteUnique(int[]  nums) {
+        if( nums == null || nums.length == 0 ) return result;
         ArrayList<Integer> path = new ArrayList<>();
-        boolean[] visited = new boolean[nums.size()];
-        Collections.sort(nums);
+        boolean[] visited = new boolean[nums.length];
+        Arrays.sort(nums);
         backtrace(path, nums, visited);
         return result;
     }
-//    private void backtrace(ArrayList<Integer> path, ArrayList<Integer> nums){
-//        if(nums.isEmpty()){
-//            result.add(new ArrayList<>(path));//oops, should pass a copy not a reference
-//            return;
-//        }
-//        for(int i = 0; i < nums.size(); i++){
-//            if(i > 0 && nums.get(i) == nums.get(i-1)){
-//                continue;
-//            }
-//            path.add(nums.remove(i));
-//            backtrace(path, nums);
-//            nums.add(i, path.remove(path.size()-1));
-//        }
-//    }
 
-    private void backtrace(ArrayList<Integer> path, ArrayList<Integer> nums, boolean[] visited){
-        if(path.size() == nums.size()){
+    private void backtrace(ArrayList<Integer> path, int[] nums, boolean[] visited){
+        if(path.size() == nums.length){
             result.add(new ArrayList<>(path));
             return;
         }
-        for(int i = 0; i < nums.size(); i++){
-            if(visited[i]){
+        for(int i = 0; i < nums.length; i++){
+            if( visited[i] || (i != 0 && nums[i] == nums[i-1] && !visited[i-1])){
                 continue;
-//            } if(i > 0 && nums.get(i) == nums.get(i-1)){
-//                continue;
-                //TODO don't works
-            }else {
-                path.add(nums.get(i));
-                visited[i] = true;
-                backtrace(path, nums, visited);
-                path.remove(path.size()-1);
-                visited[i] = false;
             }
+            path.add(nums[i]);
+            visited[i] = true;
+            backtrace(path, nums, visited);
+            path.remove(path.size()-1);
+            visited[i] = false;
         }
     }
 
     public static void main(String[] args){
         PermutationII t = new PermutationII();
-        ArrayList<Integer> input = new ArrayList<>();
-        input.add(1);
-        input.add(2);
-        input.add(2);
-        ArrayList<ArrayList<Integer>> ret = t.permuteUnique(input);
+        int[] input = {1, 2, 2};
+        List<List<Integer>> ret = t.permuteUnique(input);
         for( List<Integer> row : ret){
             System.out.println(Arrays.toString(row.toArray()));
     }

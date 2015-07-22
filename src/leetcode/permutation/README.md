@@ -14,6 +14,7 @@ for e in nums
 
 
 subset 因为输入是unique的，path没有到底也算，而且需要记住pos，
+====
 
 ```
 subset(path, nums, pos);
@@ -24,7 +25,9 @@ output(path)
     path.pop();
 ```
 
-subset ii, 因为输入不能保证uniq， 所以sort之后会出现[1 2 2 ...]
+subset ii,
+===
+因为输入不能保证uniq， 所以sort之后会出现[1 2 2 ...]
 要剔除1 2(3) 2(2) 和 1 2(2) 2(3)
 所以每个node，在path.add的时候，需要filter掉多余的elements
 
@@ -39,6 +42,7 @@ output(path)
 ```
 
 CombinationSum
+===
 
 ```
 CombinationSum(path, nums, pos);
@@ -73,22 +77,36 @@ solution 2: 纪录pos 为当前的i，通俗的讲就是，如果用了2，子�
 
 
 LetterCombinations
+=====
 这次是选择的pool变了，之前都是固定的pool，现在是动态的pool，
 这个pool是由input string 的index决定的，所以是double for loop
-```
-```
 
+permutation
+====
+if the problem is  then we don't need to track the position,
+but we need find way to remove that element from pool,
+one way to remove the element from the pool is to pass a bool[] visited
+another way to swap start and i, so the left zone are picked and right zone are to pick
+http://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
 
-
-
-
-
-if the problem is permutation then we don't need to track the position as
 ```
 permutation(path, nums);
   toResult
   for i [0, num.length)
-    path.add(e)
+    path.add(nums.remove[i])
     permutation(path, nums);
-    path.pop();
+    nums.add(i,path.pop());
 ```
+
+permuatation unique:
+
+需要注意的是
+if( visited[i] || (i != 0 && nums[i] == nums[i-1] && !visited[i-1])){
+    continue;
+}
+选第一个未选取的2开始(作为重复集合中的代表)，每个节点每层有且只有一个*新*2加入, 因为前一个2可能已经进入picked zone, 所以需要!visited[i-1]，
+
+
+TODO
+* iteration method for all them
+* DFS
