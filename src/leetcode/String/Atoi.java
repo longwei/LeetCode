@@ -15,7 +15,8 @@ public class Atoi {
             i++;
         } else if (i < n && str.charAt(i) == '-') {
             sign = -1;
-            i++; }
+            i++;
+        }
         int num = 0;
         while (i < n && Character.isDigit(str.charAt(i))) {
             int digit = str.charAt(i) - '0';
