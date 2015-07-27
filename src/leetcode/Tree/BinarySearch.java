@@ -29,7 +29,7 @@ public class BinarySearch {
         return -1;
     }
 
-    public static int binarySearch(int[] nums, int target) {
+    public static int binarySearch_jiuzhang(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return -1;
         }
@@ -50,6 +50,31 @@ public class BinarySearch {
         }
         if (nums[end] == target) {
             return end;
+        }
+        return -1;
+    }
+
+
+    /*
+     * this is a elegant solution for find the first occurrence
+     */
+    public static int binarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        int start = 0, end = nums.length - 1;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (nums[mid] < target) {
+                start = mid + 1;
+            } else if (nums[mid] > target) {
+                end = mid - 1;
+            } else if (start != mid) { //equal but range is not fully scanned
+                end = mid; //Set upper bound to current number and rescan
+            } else {
+                return mid;
+            }
         }
         return -1;
     }
