@@ -1,7 +1,4 @@
-package leetcode.Tree;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+package leetcode.binarysearch;
 
 /**
  * Created by longwei on 7/22/15.
@@ -12,6 +9,8 @@ public class BinarySearch {
      * @param target: Target to find.
      * @return: The first position of target. Position starts from 0.
      */
+
+    //this is the solution from programming perls that find ANY target
     public static int binarySearch2(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;
@@ -29,6 +28,14 @@ public class BinarySearch {
         return -1;
     }
 
+
+    //this is quite hard to understand but turn out to be a good solutions
+    //it maintain the invariant so that the target always in the to search range
+    //the each iteration reduce the size of problems by 2
+    //the only exit condition for the while loop is start + 1 < end (so exclude start = end which may result infinite loop)
+    //but because the range hold the truth of always have the target, it must be either start or end or not found.
+    // we don't know whether we are approaching the problem, could be from left side or from right side
+    //that's why it need to check both start and end position
     public static int binarySearch_jiuzhang(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return -1;
@@ -56,7 +63,7 @@ public class BinarySearch {
 
 
     /*
-     * this is a elegant solution for find the first occurrence
+     * this is a elegant solution for find the first occurrence, found in SO
      */
     public static int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
@@ -78,6 +85,7 @@ public class BinarySearch {
         }
         return -1;
     }
+
 
     public static void main(String[] arg){
         int[] input = new int[]{3,4,5,8,8,8,10,13,14};
