@@ -86,6 +86,40 @@ public class BinarySearch {
         return -1;
     }
 
+    //This is STL's implementation on binary search
+
+    public int binarySearch_lowbound(int[] nums, int target) {
+        //write your code here
+        int start = 0;
+        int end = nums.length -1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] >= target) { //I am search first element that >= target
+                end = mid; //new best, including mid
+            } else {
+                start = mid + 1;//overshot, keep the old one. don't include mid
+            }
+        }
+        //here start == end, but need to check not found issue.
+        return nums[start] == target ? start : -1;
+    }
+
+    public int binarySearch_upperbound(int[] nums, int target) {
+        //write your code here
+        int start = 0;
+        int end = nums.length -1;
+        while (start < end) {
+            int mid = start + (end - start + 1) / 2;
+            if (nums[mid] <= target) {
+                start = mid;
+            } else {
+                end = mid - 1;
+            }
+        }
+        //here start == end, but need to check not found issue.
+        return nums[end] == target ? end : -1;
+    }
+
 
     public static void main(String[] arg){
         int[] input = new int[]{3,4,5,8,8,8,10,13,14};
